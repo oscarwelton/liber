@@ -8,6 +8,8 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+import authRoutes from "./routes/auth.js"
+import { register } from "./controllers/auth.js"
 
 //  configurations
 
@@ -43,7 +45,7 @@ const upload = multer({ storage });
 // routes
 app.post("/auth/register", upload.single("picture"), register );
 
-
+app.use("/auth", authRoutes);
 
 
 // mongo-db
