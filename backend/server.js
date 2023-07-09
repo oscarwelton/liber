@@ -6,11 +6,14 @@ import dotenv from "dotenv";
 import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
+import { verifyToken } from "./middleware/auth.js"
 import path from "path";
 import { fileURLToPath } from "url";
+import { register } from "./controllers/authController.js"
 import authRoutes from "./routes/auth.js"
-import { register } from "./controllers/auth.js"
-import userRoutes from "./routes/users.js"
+import userRoutes from "./routes/user.js"
+import postRoutes from "./routes/post.js"
+import createPosts from "./controllers/postsController.js"
 
 //  configurations
 
@@ -45,9 +48,11 @@ const upload = multer({ storage });
 
 // routes
 app.post("/auth/register", upload.single("picture"), register );
+app.post("/posts", verifyToken, upload.single("picture"), createPost)
 
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
 
 // mongo-db
 
