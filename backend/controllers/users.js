@@ -6,7 +6,7 @@ export const getUser = async (req, res) => {
     const user = await User.findById(id);
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(404).json({ error: error.message });
   }
 };
 
@@ -22,10 +22,22 @@ export const getUserFollowers = async (req, res) => {
     )
     res.status(200).json(formattedFollowers);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(404).json({ error: error.message });
   }
 };
 
 export const addRemoveFollower = async (req, res) => {
+  try {
+    const { id, followerId } = req.params;
+    const user = await User.findById(id);
+    const follower = User.findBy(followId);
 
+    if (user.followers.includes(followerId)) {
+
+    }
+
+
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
 }
