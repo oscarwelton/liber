@@ -13,7 +13,7 @@ import { register } from "./controllers/authController.js"
 import authRoutes from "./routes/auth.js"
 import userRoutes from "./routes/user.js"
 import postRoutes from "./routes/post.js"
-import createPosts from "./controllers/postsController.js"
+import { createPost } from "./controllers/postsController.js"
 
 //  configurations
 
