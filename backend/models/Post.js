@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const postSchema = new mongoose.Schema(
+const postSchema = mongoose.Schema(
   {
     userId: {
       type: String,
@@ -14,13 +14,10 @@ const postSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    picturePath: {
-      type: String,
-      default: "",
-    },
-    description: { type: String },
-    location: { type: String },
-    userPicturePath: { type: String },
+    location: String,
+    description: String,
+    picturePath: String,
+    userPicturePath: String,
     likes: {
       type: Map,
       of: Boolean,
@@ -30,9 +27,7 @@ const postSchema = new mongoose.Schema(
       default: [],
     },
   },
-  {
-    timestamp: { type: Date, default: Date.now },
-  }
+  { timestamps: true }
 );
 
 const Post = mongoose.model("Post", postSchema);
