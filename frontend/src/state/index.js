@@ -28,7 +28,20 @@ export const authSlice = createSlice({
       } else {
         console.error("user followers non-existent");
       }
-    }
+    },
+    setPosts: (state, action) => {
+      state.posts = action.payload.posts;
+    },
+    setPost: (state, action) => {
+      const upadatedPosts = state.posts.map((post) => {
+        if (post._id === action.payload.post._id) return action.payload.post;
+        return post;
+      });
+      state.post = upadatedPosts;
+    },
+  },
+});
 
-  }
-})
+export const { setMode, setLogin, setLogout, setFollowers, setPosts, setPost } =
+  authSlice.actions;
+export default authSlice.reducer;
