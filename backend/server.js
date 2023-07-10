@@ -14,6 +14,9 @@ import authRoutes from "./routes/auth.js"
 import userRoutes from "./routes/user.js"
 import postRoutes from "./routes/post.js"
 import { createPost } from "./controllers/postsController.js"
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import { users, posts } from './data/seed.js'
 
 //  configurations
 
@@ -64,5 +67,7 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    // User.insertMany(users);
+    // Post.insertMany(posts);
   })
   .catch((error) => console.error(error));

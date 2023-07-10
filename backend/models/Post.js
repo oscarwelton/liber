@@ -6,7 +6,7 @@ const postSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    firsName: {
+    firstName: {
       type: String,
       required: true,
     },
@@ -18,8 +18,8 @@ const postSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    location: { type: String },
     description: { type: String },
+    location: { type: String },
     userPicturePath: { type: String },
     likes: {
       type: Map,
